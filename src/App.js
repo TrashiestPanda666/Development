@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import bakeryData from "./assets/bakery-data.json";
 import BakeryItem from "./components/BakeryItem";
-import Filters from "./components/Filters";
+import FilterBox from "./components/Filters";
 
 /* ####### DO NOT TOUCH -- this makes the image URLs work ####### */
 bakeryData.forEach((item) => {
@@ -44,12 +44,26 @@ function App() {
     setTotalPrice(totalPrice - item.price)
   }
 
-  function sort() {
-    let tempList = displayItems.sort((a, b) => {
-      if (a.price < b.price){
-        return -1;
-      }
-    });
+  function calculateDisplays(bread, cake, chocolate, sort) {
+    let tempList = bakeryData.slice()
+    if (bread){
+      tempList = tempList.filter(function(item) {
+        return item.category === "bread"
+      });
+    }
+    if (cake){
+      tempList = tempList.filter(function(item) {
+        return item.category === "cake"
+      });
+    }
+    if (chocolate){
+      tempList = tempList.filter(function(item) {
+        return item.category === "chocolate"
+      });
+    }
+    if (sort) {
+      tempList.sort((a, b) => a.price - b.price);
+    }
     updateDisplayItems(tempList)
   }
 
@@ -66,7 +80,7 @@ function App() {
         ))}
         </div>
 
-        <Filters sort={sort}/>
+        <FilterBox calculateDisplays = {calculateDisplays}/>
 
       </div>
 

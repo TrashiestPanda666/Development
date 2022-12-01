@@ -13,7 +13,7 @@ function CheckBox(props) {
 
     return (
         <label>
-            <input type="checkbox" checked={isChecked} onChange={handleChange}/>
+            <input type="checkbox" checked={isChecked} onChange={handleChange()}/>
             {props.label}
         </label>
     );
