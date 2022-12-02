@@ -14,13 +14,13 @@
   display: grid;
   place-items: center;
   place-content: center;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   justify-content: center;
 }
 
 .BakeryItem {
-  width: 50%;
+  width: 80%;
   height: 100%;
 }
 
