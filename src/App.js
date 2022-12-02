@@ -44,7 +44,7 @@ function App() {
     setTotalPrice(totalPrice - item.price)
   }
 
-  function calculateDisplays(bread, cake, chocolate, sort) {
+  function calculateDisplays(bread, cake, chocolate, sort, glutenFree) {
     let tempList = bakeryData.slice()
     if (bread){
       tempList = tempList.filter(function(item) {
@@ -61,9 +61,15 @@ function App() {
         return item.category === "chocolate"
       });
     }
+    if (glutenFree) {
+      tempList = tempList.filter(function(item) {
+        return item.glutenFree
+      })
+    }
     if (sort) {
       tempList.sort((a, b) => a.price - b.price);
     }
+    
     updateDisplayItems(tempList)
   }
 
@@ -80,18 +86,29 @@ function App() {
         ))}
         </div>
 
-        <FilterBox calculateDisplays = {calculateDisplays}/>
+        <div style={{width: "25%"}}>
 
+          <FilterBox calculateDisplays = {calculateDisplays}/>
+
+        <div style={{backgroundColor: "#E8F3D6", borderRadius: "30px"}}>
+
+          <h2>Cart</h2>
+          <button onClick={() => {setCartItems([]); setTotalPrice(0)}}>Reset Cart</button>
+          {cartItems.map((item, index) => (<p>{item.name}</p>))}
+          <div>
+            Cart Total: ${Math.round(totalPrice * 100) / 100}
+          </div>
+          
+        
+        </div>
+
+        </div>
+        
       </div>
 
       
 
-      <div>
-        <h2>Cart</h2>
-        {cartItems.map((item, index) => (<p>{item.name}</p>))}
-        {Math.round(totalPrice * 100) / 100}
-        
-      </div>
+      
     </div>
   );
 }

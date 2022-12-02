@@ -118,5 +118,13 @@
     "image": "images/tongyu.png",
     "category": "bread",
     "glutenFree": true
+  },
+  {
+    "name": "Ice Cream Cake",
+    "description": "A slice of cookies and cream ice cream cake",
+    "price": 5.99,
+    "image": "images/icecream.png",
+    "category": "chocolate",
+    "glutenFree": true
   }
 ]

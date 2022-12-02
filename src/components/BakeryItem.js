@@ -12,7 +12,7 @@ function BakeryItem(props) {
 
     return (
         <div className="BakeryItem">
-            <h1>{props.item.name}</h1>
+            <h3>{props.item.name}</h3>
 
             <img src= {props.item.image}/>
             
